@@ -16,3 +16,4 @@ This is one way to run your app — you can also run it directly from within And
 ## Browser/web development
 1. Launch development server via `yarn dev` command
 2. To build/bundle run `yarn bundle`, export/bundled build will be generated in `./metacraft folder`
+3. For deployment: run `yarn deploy --stage production` which deploy static site via (SST)[https://sst.dev/] 
