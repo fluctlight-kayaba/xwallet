@@ -1,23 +1,18 @@
 import type {FC} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 
-export const App: FC = () => {
+export const HomeScreen: FC = () => {
 	return (
 		<View style={styles.container}>
-			<Text style={styles.desc}>Hello world!</Text>
+			<Text>HomeScreen</Text>
 		</View>
 	);
 };
 
-export default App;
+export default HomeScreen;
 
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		alignItems: 'center',
-		justifyContent: 'center',
-	},
-	desc: {
-		color: '#FFFFFF',
 	},
 });
