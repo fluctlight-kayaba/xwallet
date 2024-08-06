@@ -1,14 +1,14 @@
 import type { FC } from 'react';
-import { StyleSheet } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
 import ApplicationStack from 'stacks/App';
 import { navigationRef } from 'utils/navigation';
+import { navigationTheme } from 'utils/style';
 
 export const AppContainer: FC = () => {
 	return (
 		<SafeAreaProvider>
-			<NavigationContainer ref={navigationRef}>
+			<NavigationContainer ref={navigationRef} theme={navigationTheme}>
 				<ApplicationStack />
 			</NavigationContainer>
 		</SafeAreaProvider>
@@ -16,9 +16,3 @@ export const AppContainer: FC = () => {
 };
 
 export default AppContainer;
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-	},
-});
