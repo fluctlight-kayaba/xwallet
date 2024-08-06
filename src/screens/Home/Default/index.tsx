@@ -1,36 +1,47 @@
 import type { FC } from 'react';
 import type { ListRenderItem } from 'react-native';
+import { ActivityIndicator } from 'react-native';
 import { FlatList, StyleSheet, Text, TextInput, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import type { StackNavigationProp } from '@react-navigation/stack';
-import { inscriptionState } from 'state/inscription';
+import { useInput } from 'utils/hooks';
+import { useRemoteInscriptionList } from 'utils/hooks/inscription';
 import type { HomeParamList } from 'utils/navigation';
 import { commonStyle, constants } from 'utils/style';
 import type { InscriptionSummary } from 'utils/types';
-import { useSnapshot } from 'valtio';
 
-import InscriptionSummary from './InscriptionSummary';
+import Inscription from './Inscription';
 
 export const HomeScreen: FC = () => {
+	const addressInput = useInput('');
 	const { navigate } = useNavigation<StackNavigationProp<HomeParamList>>();
-	const { items: inscriptions } = useSnapshot(inscriptionState);
+	const { loading, data } = useRemoteInscriptionList(addressInput.value);
 
-	const navigateToDetail = (item: InscriptionSummary) => {
+	const navigateToDetail = (id: string) => {
 		navigate('Detail', {
-			id: item.id,
-			address: 'bc1pe6y27ey6gzh6p0j250kz23zra7xn89703pvmtzx239zzstg47j3s3vdvvs',
+			id: id,
+			address: addressInput.value,
 		});
 	};
 
 	const renderInscription: ListRenderItem<InscriptionSummary> = ({ item }) => {
-		return <InscriptionSummary item={item} onPress={navigateToDetail} />;
+		return <Inscription item={item} onPress={navigateToDetail} />;
 	};
+
 	return (
 		<View style={styles.container}>
 			<Text style={commonStyle.pageTitle}>Owner Bitcoin Address:</Text>
-			<TextInput style={commonStyle.textInput} />
-			<Text style={commonStyle.pageTitle}>Results</Text>
-			<FlatList data={inscriptions} renderItem={renderInscription} />
+			<TextInput style={commonStyle.textInput} {...addressInput} />
+			{loading ? (
+				<View style={styles.loadingContainer}>
+					<ActivityIndicator color="#fffff" />
+				</View>
+			) : (
+				<View style={styles.resultContainer}>
+					<Text style={commonStyle.pageTitle}>Results</Text>
+					<FlatList data={data?.results} renderItem={renderInscription} />
+				</View>
+			)}
 		</View>
 	);
 };
@@ -42,5 +53,12 @@ const styles = StyleSheet.create({
 		flex: 1,
 		paddingHorizontal: constants.pagePadding,
 		gap: 12,
+		paddingTop: 32,
+	},
+	loadingContainer: {
+		flex: 1,
+	},
+	resultContainer: {
+		flex: 1,
 	},
 });

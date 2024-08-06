@@ -1,20 +1,25 @@
 import type { FC } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import RightArrowIcon from 'components/icon/RightArrow';
+import { shortId } from 'utils/helper';
 import { colors } from 'utils/style';
 import type { InscriptionSummary } from 'utils/types';
 
 type Props = {
 	item: InscriptionSummary;
-	onPress: (item: InscriptionSummary) => void;
+	onPress: (id: string) => void;
 };
 
-export const InscriptionSummary: FC<Props> = ({ item, onPress }) => {
+export const Inscription: FC<Props> = ({ item, onPress }) => {
+	const firstItem = item?.inscriptions?.[0];
 	return (
-		<TouchableOpacity style={styles.container} onPress={() => onPress?.(item)}>
+		<TouchableOpacity
+			style={styles.container}
+			onPress={() => onPress?.(firstItem?.id)}
+		>
 			<View style={styles.infoContainer}>
 				<Text numberOfLines={1} style={styles.idText}>
-					Inscription {item.id}
+					Inscription {shortId(firstItem.id)}
 				</Text>
 			</View>
 			<RightArrowIcon />
@@ -22,7 +27,7 @@ export const InscriptionSummary: FC<Props> = ({ item, onPress }) => {
 	);
 };
 
-export default InscriptionSummary;
+export default Inscription;
 
 const styles = StyleSheet.create({
 	container: {

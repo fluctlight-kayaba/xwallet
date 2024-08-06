@@ -1,7 +1,7 @@
 export const shortId = (
 	input?: string,
-	startLength = 4,
-	endLength = 4,
+	startLength = 6,
+	endLength = 6,
 ): string => {
 	if (!input) return '';
 

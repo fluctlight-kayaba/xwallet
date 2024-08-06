@@ -1,7 +1,14 @@
 export type InscriptionSummary = {
-	id: string;
-	offset: number;
-	content_type?: string;
+	block_height: number;
+	inscriptions: Array<{
+		id: string;
+		offset: number;
+		content_type?: string;
+	}>;
+	stats: [];
+	txid: string;
+	value: number;
+	vout: number;
 };
 
 export type InscriptionDetail = {

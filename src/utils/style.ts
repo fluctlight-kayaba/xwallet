@@ -37,7 +37,7 @@ export const commonStyle = StyleSheet.create({
 		backgroundColor: colors.inputBackground,
 		borderRadius: constants.smallRadius,
 		paddingHorizontal: 12,
-		height: 32,
+		minHeight: 36,
 	},
 	pageTitle: {
 		color: colors.text,
