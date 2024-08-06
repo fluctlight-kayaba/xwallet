@@ -6,6 +6,7 @@ import {
 	ScrollView,
 	StyleSheet,
 	Text,
+	useWindowDimensions,
 	View,
 } from 'react-native';
 import type { RouteProp } from '@react-navigation/native';
@@ -22,6 +23,11 @@ export const HomeDetailScreen: FC = () => {
 		id as string,
 		address as string,
 	);
+	const deviceDimension = useWindowDimensions();
+	const imageStyle = {
+		width: deviceDimension.width,
+		height: deviceDimension.width,
+	};
 	const imageSource = { uri: data };
 
 	return (
@@ -32,7 +38,7 @@ export const HomeDetailScreen: FC = () => {
 				</View>
 			) : (
 				<View style={styles.dataContainer}>
-					<Image source={imageSource} style={styles.headingImage} />
+					<Image source={imageSource} style={imageStyle} />
 					<View style={styles.infoContainer}>
 						<Text style={styles.inscriptionId}>
 							Inscription {Math.abs(info?.number || 0)}
