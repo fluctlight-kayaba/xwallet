@@ -1,3 +1,20 @@
 {
-  "extends": "@react-native/typescript-config/tsconfig.json"
+  "extends": "@metacraft/tsconfig/application.json",
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "components/*": ["./src/components/*"],
+      "screens/*": ["./src/screens/*"],
+      "stacks/*": ["./src/stacks/*"],
+      "utils/*": ["./src/utils/*"],
+      "state/*": ["./src/state/*"],
+      "assets/*": ["./src/assets/*"]
+    }
+  }
 }
