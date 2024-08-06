@@ -46,10 +46,14 @@ export const commonStyle = StyleSheet.create({
 	fieldTitle: {
 		fontSize: 12,
 		color: colors.text,
+		marginBottom: 6,
 	},
 	fieldValue: {
 		color: colors.text,
 		backgroundColor: colors.inputBackground,
 		borderRadius: constants.smallRadius,
+		paddingVertical: 10,
+		paddingHorizontal: 12,
+		marginBottom: 18,
 	},
 });

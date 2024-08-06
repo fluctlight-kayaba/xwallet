@@ -1,1 +1,8 @@
 GET https://api-3.xverse.app/v1/address/bc1pe6y27ey6gzh6p0j250kz23zra7xn89703pvmtzx239zzstg47j3s3vdvvs/ordinal-utxo 
+
+GET https://api-3.xverse.app/v1/address/undefined/ordinals/inscriptions/e09c71fb45b4afffddd6fbe1ac650817e31db2a4d9cfb46b333b122db71b0d5ei0
+
+GET https://api-3.xverse.app/v1/address/bc1pe6y27ey6gzh6p0j250kz23zra7xn89703pvmtzx239zzstg47j3s3vdvvs/ordinals/inscriptions/e09c71fb45b4afffddd6fbe1ac650817e31db2a4d9cfb46b333b122db71b0d5ei0
+
+GET https://ord.xverse.app/content/e09c71fb45b4afffddd6fbe1ac650817e31db2a4d9cfb46b333b122db71b0d5ei0
+GET https://ord.xverse.app/content/bc1p5m6n9applkrgz9m2fhls4g0lmdsx4ef6tr9k5vrnkxjuvq3096ms70gvyc

@@ -1,14 +1,14 @@
-import type { Inscription } from 'utils/types';
+import type { InscriptionSummary } from 'utils/types';
 import { proxy } from 'valtio';
 
 export type InscriptionState = {
-	items: Array<Inscription>;
+	items: Array<InscriptionSummary>;
 };
 
 export const inscriptionState = proxy<InscriptionState>({
 	items: [
 		{
-			id: '2f83b9b0',
+			id: 'e09c71fb45b4afffddd6fbe1ac650817e31db2a4d9cfb46b333b122db71b0d5ei0',
 			offset: 0,
 		},
 		{

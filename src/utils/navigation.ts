@@ -6,6 +6,7 @@ export type HomeParamList = {
 	Default: undefined;
 	Detail: {
 		id: string;
+		address: string;
 	};
 };
 

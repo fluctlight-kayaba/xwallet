@@ -6,7 +6,7 @@ import type { StackNavigationProp } from '@react-navigation/stack';
 import { inscriptionState } from 'state/inscription';
 import type { HomeParamList } from 'utils/navigation';
 import { commonStyle, constants } from 'utils/style';
-import type { Inscription } from 'utils/types';
+import type { InscriptionSummary } from 'utils/types';
 import { useSnapshot } from 'valtio';
 
 import InscriptionSummary from './InscriptionSummary';
@@ -15,11 +15,14 @@ export const HomeScreen: FC = () => {
 	const { navigate } = useNavigation<StackNavigationProp<HomeParamList>>();
 	const { items: inscriptions } = useSnapshot(inscriptionState);
 
-	const navigateToDetail = (item: Inscription) => {
-		navigate('Detail', { id: item.id });
+	const navigateToDetail = (item: InscriptionSummary) => {
+		navigate('Detail', {
+			id: item.id,
+			address: 'bc1pe6y27ey6gzh6p0j250kz23zra7xn89703pvmtzx239zzstg47j3s3vdvvs',
+		});
 	};
 
-	const renderInscription: ListRenderItem<Inscription> = ({ item }) => {
+	const renderInscription: ListRenderItem<InscriptionSummary> = ({ item }) => {
 		return <InscriptionSummary item={item} onPress={navigateToDetail} />;
 	};
 	return (

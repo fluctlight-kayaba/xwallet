@@ -2,11 +2,11 @@ import type { FC } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import RightArrowIcon from 'components/icon/RightArrow';
 import { colors } from 'utils/style';
-import type { Inscription } from 'utils/types';
+import type { InscriptionSummary } from 'utils/types';
 
 type Props = {
-	item: Inscription;
-	onPress: (item: Inscription) => void;
+	item: InscriptionSummary;
+	onPress: (item: InscriptionSummary) => void;
 };
 
 export const InscriptionSummary: FC<Props> = ({ item, onPress }) => {
