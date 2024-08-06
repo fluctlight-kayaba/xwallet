@@ -4,7 +4,9 @@ import type { StackNavigationOptions } from '@react-navigation/stack';
 
 export type HomeParamList = {
 	Default: undefined;
-	Detail: undefined;
+	Detail: {
+		id: string;
+	};
 };
 
 export type RootParamList = {
