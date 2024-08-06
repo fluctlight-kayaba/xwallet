@@ -1,4 +1,4 @@
-const {resolve} = require('path');
+const { resolve } = require('path');
 const CopyPlugin = require('copy-webpack-plugin');
 
 const isProd = process.env.ENV === 'production';
@@ -6,7 +6,7 @@ const isProd = process.env.ENV === 'production';
 const minifyOption = {
 	compress: true,
 	mangle: true,
-	format: {comments: false},
+	format: { comments: false },
 };
 
 const swcOptions = () => ({
@@ -29,10 +29,10 @@ const swcOptions = () => ({
 	},
 });
 
-const copyAssets = config => {
+const copyAssets = (config) => {
 	config.module.rules[1].use[1] = {
 		loader: 'css-loader',
-		options: {url: false},
+		options: { url: false },
 	};
 
 	config.plugins.push(
@@ -41,7 +41,7 @@ const copyAssets = config => {
 				{
 					from: resolve(process.cwd(), 'assets/'),
 					to: './',
-					filter: uri => {
+					filter: (uri) => {
 						const isTemplate = uri.endsWith('.ejs') || uri.endsWith('.sass');
 						return !isTemplate;
 					},
